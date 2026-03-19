@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPA - Organization of Peace Assistors</title>
+<meta name="description" content="Organization of Peace Assistors (OPA) - Serving Humanity with Compassion. A non-profit social service organization based in Bangladesh.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#1a2744;--navy-light:#3d5278;--gold:#d4952a;--gold-light:#e0b35c;
+--cream:#f8f7f4;--white:#ffffff;--text:#1c2a3f;--muted:#6b7a8d;--border:#e2e5ea;
+--font-heading:'DM Serif Display',serif;--font-body:'DM Sans',sans-serif;--font-bangla:'Noto Sans Bengali',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+.section{padding:64px 16px}
+@media(min-width:768px){.section{padding:96px 32px}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:8px;font-weight:600;font-size:1.05rem;cursor:pointer;transition:opacity .3s,background .3s;border:none;font-family:var(--font-body)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-outline{background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff}
+.btn-navy{background:var(--navy);color:#fff}
+.btn:hover{opacity:.88}
+
+/* NAV */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto;padding:0 16px}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:1.25rem;color:var(--text)}
+.nav-logo-circle{width:40px;height:40px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-heading);font-weight:700;font-size:1.1rem}
+.nav-links{display:none;gap:4px;align-items:center}
+@media(min-width:1024px){.nav-links{display:flex}}
+.nav-links a{padding:8px 14px;border-radius:6px;font-size:.875rem;font-weight:500;transition:background .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{background:var(--navy);color:#fff}
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);font-size:.875rem;font-weight:500;cursor:pointer;background:transparent;font-family:var(--font-body);transition:background .2s}
+.lang-btn:hover{background:#f0f0f0}
+.hamburger{display:flex;cursor:pointer;background:none;border:none;padding:8px;border-radius:6px}
+.hamburger:hover{background:#f0f0f0}
+@media(min-width:1024px){.hamburger{display:none}}
+.hamburger svg{width:24px;height:24px}
+.mobile-menu{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:12px 16px;animation:fadeIn .3s}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:10px 14px;border-radius:6px;font-size:.9rem;font-weight:500;transition:background .2s}
+.mobile-menu a:hover,.mobile-menu a.active{background:var(--navy);color:#fff}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-in-up{animation:fadeInUp .8s ease forwards}
+.scroll-anim{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.scroll-anim.visible{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&q=80') center/cover;opacity:.35}
+.hero-content{position:relative;z-index:2;text-align:center;padding:20px;max-width:800px}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);color:#fff;margin-bottom:20px}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.8);margin-bottom:40px;max-width:640px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+
+/* COUNTERS */
+.counters{background:var(--navy);padding:64px 16px}
+.counters-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:960px;margin:0 auto;text-align:center}
+@media(min-width:768px){.counters-grid{grid-template-columns:repeat(4,1fr)}}
+.counter-num{font-size:clamp(2rem,4vw,3rem);font-family:var(--font-heading);color:var(--gold);font-weight:700}
+.counter-label{color:rgba(255,255,255,.8);font-size:.85rem;margin-top:6px}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:768px){.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.cards-grid.cols-4{grid-template-columns:repeat(4,1fr)}.cards-grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;transition:box-shadow .3s,transform .3s}
+.card:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);transform:translateY(-2px)}
+.card-body{padding:24px}
+.card-icon{width:48px;height:48px;border-radius:10px;background:rgba(212,149,42,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:background .3s}
+.card:hover .card-icon{background:var(--gold)}
+.card:hover .card-icon svg{stroke:var(--navy)}
+.card-icon svg{width:24px;height:24px;stroke:var(--gold)}
+.card h3{font-family:var(--font-heading);font-size:1.15rem;margin-bottom:8px}
+.card p{font-size:.9rem;color:var(--muted)}
+
+/* PAGE HEADER */
+.page-header{background:var(--navy);color:#fff;padding:96px 16px 48px;text-align:center}
+.page-header h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}
+.page-header p{color:rgba(255,255,255,.8);max-width:640px;margin:0 auto}
+
+/* SECTION TITLES */
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:12px}
+.section-title p{color:var(--muted);max-width:640px;margin:0 auto}
+
+/* FORM */
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.875rem;font-weight:500;margin-bottom:6px}
+.form-input{width:100%;padding:12px 16px;border-radius:8px;border:1px solid var(--border);font-size:1rem;font-family:var(--font-body);transition:box-shadow .2s;background:#fff;color:var(--text)}
+.form-input:focus{outline:none;box-shadow:0 0 0 3px rgba(212,149,42,.3)}
+textarea.form-input{resize:vertical;min-height:100px}
+.form-card{background:#fff;padding:32px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.form-row{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:768px){.form-row{grid-template-columns:1fr 1fr}}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:768px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
+.gallery-item{border-radius:12px;overflow:hidden;aspect-ratio:1;cursor:pointer;border:1px solid var(--border)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.1)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90%;max-height:85vh;border-radius:12px;object-fit:contain;animation:fadeInUp .4s}
+.lightbox-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+
+/* PAYMENT */
+.payment-card{background:#fff;padding:20px;border-radius:12px;border:1px solid var(--border);display:flex;align-items:flex-start;gap:16px}
+.payment-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.payment-icon.bkash{background:#fce4ec;color:#e91e63}
+.payment-icon.nagad{background:#fff3e0;color:#ef6c00}
+.payment-icon.bank{background:#e3f2fd;color:#1565c0}
+.amount-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.amount-btn{padding:10px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:500;transition:background .2s,color .2s;font-family:var(--font-body)}
+.amount-btn.active,.amount-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* CONTACT INFO */
+.contact-info-item{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.contact-info-icon{width:40px;height:40px;border-radius:10px;background:rgba(212,149,42,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-info-icon svg{width:20px;height:20px;stroke:var(--gold)}
+
+/* FOOTER */
+.footer{background:var(--navy);color:#fff;padding:48px 16px 24px}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:32px;max-width:1200px;margin:0 auto}
+@media(min-width:768px){.footer-grid{grid-template-columns:repeat(3,1fr)}}
+.footer h3{font-family:var(--font-heading);font-size:1.1rem;margin-bottom:16px}
+.footer p,.footer a{font-size:.875rem;color:rgba(255,255,255,.8)}
+.footer a:hover{color:var(--gold)}
+.footer-links a{display:block;margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:32px;padding-top:20px;text-align:center;font-size:.85rem;color:rgba(255,255,255,.5)}
+.social-links{display:flex;gap:10px;margin-top:16px}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-link:hover{background:var(--gold)}
+.social-link svg{width:16px;height:16px;fill:#fff}
+
+/* PAGES HIDDEN */
+.page{display:none}.page.active{display:block}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:#1a2744;color:#fff;padding:14px 24px;border-radius:10px;font-size:.9rem;z-index:300;animation:fadeInUp .4s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.toast.hide{opacity:0;transition:opacity .3s}
+
+/* Mission/Vision grid */
+.mv-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:768px){.mv-grid{grid-template-columns:1fr 1fr}}
+
+/* Activity card image */
+.activity-card-img{height:200px;overflow:hidden}
+.activity-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .activity-card-img img{transform:scale(1.1)}
+
+.map-frame{border-radius:12px;overflow:hidden;border:1px solid var(--border);height:250px}
+.map-frame iframe{width:100%;height:100%;border:0}
+.two-col{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:768px){.two-col{grid-template-columns:1fr 1fr}}
+.max-w-2xl{max-width:640px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nav-inner">
+<a href="#" class="nav-logo" onclick="showPage('home')"><div class="nav-logo-circle"><img src="media/removebglogo.png"></div><span>Organization of Peace Assistors - OPA</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#" onclick="showPage('home')" class="active" data-page="home" data-en="Home" data-bn="হোম">Home</a>
+<a href="#" onclick="showPage('about')" data-page="about" data-en="About" data-bn="পরিচিতি">About</a>
+<a href="#" onclick="showPage('activities')" data-page="activities" data-en="Activities" data-bn="কার্যক্রম">Activities</a>
+<a href="#" onclick="showPage('gallery')" data-page="gallery" data-en="Gallery" data-bn="গ্যালারি">Gallery</a>
+<a href="#" onclick="showPage('volunteer')" data-page="volunteer" data-en="Volunteer" data-bn="স্বেচ্ছাসেবক">Volunteer</a>
+<a href="#" onclick="showPage('donate')" data-page="donate" data-en="Donate" data-bn="দান করুন">Donate</a>
+<a href="#" onclick="showPage('contact')" data-page="contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+</div>
+<div class="nav-right">
+<button class="lang-btn" onclick="toggleLang()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="langLabel">বাংলা</span></button>
+<button class="hamburger" onclick="toggleMenu()"><svg id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#" onclick="showPage('home')" data-page="home" class="active" data-en="Home" data-bn="হোম">Home</a>
+<a href="#" onclick="showPage('about')" data-page="about" data-en="About" data-bn="পরিচিতি">About</a>
+<a href="#" onclick="showPage('activities')" data-page="activities" data-en="Activities" data-bn="কার্যক্রম">Activities</a>
+<a href="#" onclick="showPage('gallery')" data-page="gallery" data-en="Gallery" data-bn="গ্যালারি">Gallery</a>
+<a href="#" onclick="showPage('volunteer')" data-page="volunteer" data-en="Volunteer" data-bn="স্বেচ্ছাসেবক">Volunteer</a>
+<a href="#" onclick="showPage('donate')" data-page="donate" data-en="Donate" data-bn="দান করুন">Donate</a>
+<a href="#" onclick="showPage('contact')" data-page="contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+</div>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content fade-in-up">
+<h1 data-en="Serving Humanity with Compassion" data-bn="সহানুভূতি দিয়ে মানবতার সেবা">Serving Humanity with Compassion</h1>
+<p data-en="Organization of Peace Assistors - OPA is committed to building a compassionate society through selfless service." data-bn="অর্গানাইজেশন অফ পিস অ্যাসিস্টরস (OPA) নিঃস্বার্থ সেবার মাধ্যমে একটি সহানুভূতিশীল সমাজ গড়তে প্রতিশ্রুতিবদ্ধ।">Organization of Peace Assistors (OPA) is committed to building a compassionate society through selfless service.</p>
+<div class="hero-btns">
+<a href="#" class="btn btn-gold" onclick="showPage('volunteer')" data-en="Join Us →" data-bn="যোগ দিন →">Join Us →</a>
+<a href="#" class="btn btn-outline" onclick="showPage('donate')" data-en="♥ Donate Now" data-bn="♥ দান করুন">♥ Donate Now</a>
+</div>
+</div>
+</section>
+
+<section class="counters">
+<div class="counters-grid">
+<div class="scroll-anim"><div class="counter-num" data-target="1200">0</div><div class="counter-label" data-en="People Helped" data-bn="মানুষকে সাহায্য করা হয়েছে">People Helped</div></div>
+<div class="scroll-anim"><div class="counter-num" data-target="50">0</div><div class="counter-label" data-en="Projects Completed" data-bn="প্রকল্প সম্পন্ন">Projects Completed</div></div>
+<div class="scroll-anim"><div class="counter-num" data-target="34">0</div><div class="counter-label" data-en="Volunteers" data-bn="স্বেচ্ছাসেবক">Volunteers</div></div>
+<div class="scroll-anim"><div class="counter-num" data-target="12">0</div><div class="counter-label" data-en="Years of Service" data-bn="বছরের সেবা">Years of Service</div></div>
+</div>
+</section>
+
+<section class="section" style="background:var(--cream)">
+<div class="container">
+<div class="section-title scroll-anim">
+<h2 data-en="What We Do" data-bn="আমরা কী করি">What We Do</h2>
+<p data-en="From food distribution to education programs, we work tirelessly to uplift communities across Bangladesh." data-bn="খাদ্য বিতরণ থেকে শিক্ষা কার্যক্রম পর্যন্ত, আমরা বাংলাদেশ জুড়ে সমাজের উন্নয়নে নিরলস কাজ করি।">From food distribution to education programs, we work tirelessly to uplift communities across Bangladesh.</p>
+</div>
+<div class="cards-grid cols-4 scroll-anim">
+<div class="card"><div class="card-body"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 data-en="Humanitarian Aid" data-bn="মানবিক সহায়তা">Humanitarian Aid</h3><p data-en="Food, clothing and essential supplies for those in need." data-bn="অভাবীদের জন্য খাদ্য, পোশাক এবং প্রয়োজনীয় সামগ্রী।">Food, clothing and essential supplies for those in need.</p></div></div>
+<div class="card"><div class="card-body"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3 data-en="Community Support" data-bn="সামাজিক সহায়তা">Community Support</h3><p data-en="Building stronger communities through collective action." data-bn="সম্মিলিত প্রচেষ্টায় শক্তিশালী সম্প্রদায় গঠন।">Building stronger communities through collective action.</p></div></div>
+<div class="card"><div class="card-body"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h3 data-en="Education" data-bn="শিক্ষা">Education</h3><p data-en="Educational programs for underprivileged children." data-bn="সুবিধাবঞ্চিত শিশুদের জন্য শিক্ষা কার্যক্রম।">Educational programs for underprivileged children.</p></div></div>
+<div class="card"><div class="card-body"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 data-en="Emergency Relief" data-bn="জরুরি ত্রাণ">Emergency Relief</h3><p data-en="Rapid response during natural disasters and crises." data-bn="প্রাকৃতিক দুর্যোগ ও সংকটে দ্রুত সাড়া।">Rapid response during natural disasters and crises.</p></div></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container" style="text-align:center">
+<div class="scroll-anim">
+<h2 data-en="Be a Part of the Change" data-bn="পরিবর্তনের অংশ হোন">Be a Part of the Change</h2>
+<p style="color:var(--muted);max-width:560px;margin:12px auto 32px" data-en="Your small contribution can make a big difference in someone's life." data-bn="আপনার ছোট অবদান কারো জীবনে বড় পরিবর্তন আনতে পারে।">Your small contribution can make a big difference in someone's life.</p>
+<a href="#" class="btn btn-navy" onclick="showPage('volunteer')" data-en="Become a Volunteer →" data-bn="স্বেচ্ছাসেবক হোন →">Become a Volunteer →</a>
+</div>
+</div>
+</section>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+<div class="page-header" style="padding-top:96px">
+<h1 data-en="About Us" data-bn="আমাদের পরিচিতি">About Us</h1>
+<p data-en="Organization of Peace Assistors (OPA) is a non-profit social service organization based in Bangladesh, dedicated to serving underprivileged communities." data-bn="অর্গানাইজেশন অফ পিস অ্যাসিস্টরস (OPA) বাংলাদেশভিত্তিক একটি অলাভজনক সমাজসেবা সংগঠন, যা সুবিধাবঞ্চিত জনগোষ্ঠীর সেবায় নিবেদিত।">Organization of Peace Assistors (OPA) is a non-profit social service organization based in Bangladesh, dedicated to serving underprivileged communities.</p>
+</div>
+<section class="section" style="background:var(--cream)">
+<div class="container"><div class="mv-grid scroll-anim">
+<div class="card"><div class="card-body"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h2 style="font-size:1.5rem;margin-bottom:12px" data-en="Our Mission" data-bn="আমাদের লক্ষ্য">Our Mission</h2><p style="color:var(--muted)" data-en="To create a society where every individual has access to basic needs — food, clothing, education, and emergency support — through organized volunteer efforts and community engagement." data-bn="সুসংগঠিত স্বেচ্ছাসেবী প্রচেষ্টা এবং সামাজিক অংশগ্রহণের মাধ্যমে এমন একটি সমাজ গড়ে তোলা যেখানে প্রতিটি ব্যক্তি খাদ্য, বস্ত্র, শিক্ষা এবং জরুরি সহায়তার মতো মৌলিক চাহিদাগুলো পূরণ করতে পারে।">To create a society where every individual has access to basic needs — food, clothing, education, and emergency support — through organized volunteer efforts and community engagement.</p></div></div>
+<div class="card"><div class="card-body"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><h2 style="font-size:1.5rem;margin-bottom:12px" data-en="Our Vision" data-bn="আমাদের দর্শন">Our Vision</h2><p style="color:var(--muted)" data-en="A world where compassion drives action, where no one is left behind, and where peace prevails through mutual assistance and understanding." data-bn="এমন একটি বিশ্ব যেখানে সহানুভূতি কর্মে উদ্বুদ্ধ করে, যেখানে কেউ পিছিয়ে থাকে না এবং যেখানে পারস্পরিক সহায়তা ও বোঝাপড়ার মাধ্যমে শান্তি বিরাজ করে।">A world where compassion drives action, where no one is left behind, and where peace prevails through mutual assistance and understanding.</p></div></div>
+</div></div>
+</section>
+<section class="section">
+<div class="container" style="text-align:center">
+<div class="scroll-anim">
+<div style="width:64px;height:64px;border-radius:50%;background:rgba(212,149,42,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+<h2 data-en="Our Team" data-bn="আমাদের টিম">Our Team</h2>
+<p style="color:var(--muted);max-width:640px;margin:12px auto 0" data-en="OPA is driven by a passionate team of young volunteers from across Bangladesh who believe in the power of community service. Our leadership team brings together professionals from diverse backgrounds, united by a shared vision of serving humanity." data-bn="OPA পরিচালিত হয় বাংলাদেশের বিভিন্ন প্রান্ত থেকে আসা একদল উৎসাহী তরুণ স্বেচ্ছাসেবক দ্বারা যারা সামাজিক সেবার শক্তিতে বিশ্বাস করে। আমাদের নেতৃত্ব দল বিভিন্ন পেশার পেশাদারদের একত্রিত করে, যারা মানবতার সেবার একটি অভিন্ন দর্শনে ঐক্যবদ্ধ।">OPA is driven by a passionate team of young volunteers from across Bangladesh who believe in the power of community service.</p>
+</div>
+</div>
+</section>
+</div>
+
+<!-- ACTIVITIES PAGE -->
+<div class="page" id="page-activities">
+<div class="page-header" style="padding-top:96px">
+<h1 data-en="Our Activities" data-bn="আমাদের কার্যক্রম">Our Activities</h1>
+<p data-en="Explore the various programs and initiatives we run throughout the year." data-bn="সারা বছর ধরে আমরা যে বিভিন্ন কার্যক্রম ও উদ্যোগ পরিচালনা করি তা অন্বেষণ করুন।">Explore the various programs and initiatives we run throughout the year.</p>
+</div>
+<section class="section" style="background:var(--cream)">
+<div class="container"><div class="cards-grid cols-3">
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/iftar.jpeg" alt="Iftar Distribution"></div><div class="card-body"><h3 data-en="Iftar Distribution Program" data-bn="ইফতার বিতরণ কর্মসূচি">Iftar Distribution Program</h3><p data-en="Every Ramadan we distribute iftar meals to fasting individuals who cannot afford their own, spreading joy and nourishment during the holy month." data-bn="প্রতি রমজানে আমরা অভাবী রোজাদারদের মাঝে ইফতার বিতরণ করি, পবিত্র মাসে আনন্দ ও পুষ্টি ছড়িয়ে দিই।">Every Ramadan we distribute iftar meals to fasting individuals who cannot afford their own.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/eidgift.jpeg" alt="Eid Gift"></div><div class="card-body"><h3 data-en="Eid Gift Distribution" data-bn="ঈদ সামগ্রী বিতরণ">Eid Gift Distribution</h3><p data-en="We ensure underprivileged families can celebrate Eid with dignity by providing clothing, food packages, and gifts." data-bn="আমরা নিশ্চিত করি যেন সুবিধাবঞ্চিত পরিবারগুলো পোশাক, খাদ্য প্যাকেজ ও উপহারের মাধ্যমে ঈদ উদযাপন করতে পারে।">We ensure underprivileged families can celebrate Eid with dignity.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/winter.jpeg" alt="Winter Clothing"></div><div class="card-body"><h3 data-en="Winter Clothing Distribution" data-bn="শীতবস্ত্র বিতরণ">Winter Clothing Distribution</h3><p data-en="During the cold season, we distribute warm clothing and blankets to those who need them most in rural areas." data-bn="শীতকালে আমরা গ্রামাঞ্চলে সবচেয়ে অভাবীদের মাঝে গরম পোশাক ও কম্বল বিতরণ করি।">During the cold season, we distribute warm clothing and blankets.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/treeplantation.jpeg" alt="Helpless"></div><div class="card-body"><h3 data-en="Assistance for the Helpless" data-bn="বৃক্ষরোপণ কর্মসূচি">Tree Plantation Program</h3><p data-en="We ensure increased tree planting to maintain ecological balance, reduce air pollution, and help combat the effects of Climate Change." data-bn="আমরা নিশ্চিত করি যেন বেশি বেশি গাছ লাগানোর মাধ্যমে পরিবেশের ভারসাম্য রক্ষা করা যায়, বায়ুদূষণ কমে এবং জলবায়ু পরিবর্তন-এর প্রভাব মোকাবিলায় সহায়তা করা যায়।">We provide essential support including food, medicine, and shelter assistance.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/eidjoyshareingoldagehome.jpeg" alt="Education"></div><div class="card-body"><h3 data-en="Eid Joy Sharing Program (Old Age Home)" data-bn="ঈদ আনন্দ ভাগাভাগি কর্মসূচি (বৃদ্ধাশ্রম)">Eid Joy Sharing Program (Old Age Home)</h3><p data-en="We ensure sharing the joy of Eid with elderly residents of old age homes by spending time with them and providing love, happiness, and human support." data-bn="আমরা নিশ্চিত করি যেন ঈদুল ফিতরের আনন্দ বৃদ্ধাশ্রমে থাকা দাদা-দাদীদের সাথে ভাগাভাগি করা যায় এবং তাদের সাথে সময় কাটিয়ে ভালোবাসা, খুশি ও মানবিক সহায়তা প্রদান করা যায়।">Our educational initiatives provide tutoring, school supplies, and scholarships.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/mosquitocontrol.jpeg" alt="Education"></div><div class="card-body"><h3 data-en="Aedes Mosquito Control Program" data-bn="এডিস মশা নিধন কর্মসূচি">Aedes Mosquito Control Program</h3><p data-en="We ensure the prevention of Aedes mosquito breeding and promote a clean environment to reduce the risk of Dengue, Chikungunya, and Zika Virus, keeping communities safe and protected." data-bn="আমরা নিশ্চিত করি যেন এডিস মশার বংশবিস্তার রোধ করা যায় এবং পরিবেশ পরিষ্কার রাখার মাধ্যমে ডেঙ্গু, চিকুনগুনিয়া ও জিকা ভাইরাস-এর ঝুঁকি কমিয়ে সবাইকে নিরাপদ রাখা যায়।">Our educational initiatives provide tutoring, school supplies, and scholarships.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/leaflet.jpeg" alt="Education"></div><div class="card-body"><h3 data-en="Awareness Leaflet Distribution Program" data-bn="সচেতনতামূলক লিফলেট বিতরণ কর্মসূচি">Awareness Leaflet Distribution Program</h3><p data-en="We ensure spreading awareness on important issues, such as prevention of Dengue, by distributing informative leaflets to build a safer and more informed community." data-bn="আমরা নিশ্চিত করি যেন বিভিন্ন গুরুত্বপূর্ণ বিষয়ে সচেতনতা বৃদ্ধি পায়, যেমন ডেঙ্গু প্রতিরোধ, এবং মানুষের মধ্যে সঠিক তথ্য ছড়িয়ে দেওয়ার মাধ্যমে একটি নিরাপদ ও সচেতন সমাজ গড়ে ওঠে।">Our educational initiatives provide tutoring, school supplies, and scholarships.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/protestrally.jpeg" alt="Education"></div><div class="card-body"><h3 data-en="Solidarity & Protest Rally (For Palestine)" data-bn="সংহতি ও প্রতিবাদ মিছিল (ফিলিস্তিনের পক্ষে)">Solidarity & Protest Rally (For Palestine)
+</h3><p data-en="We ensure expressing solidarity with Palestinian Muslims and raising awareness through peaceful protest and support for the global strike." data-bn="আমরা নিশ্চিত করি যেন ফিলিস্তিনি মুসলমানদের প্রতি সংহতি প্রকাশ এবং বিশ্বব্যাপী হরতালের সমর্থনে শান্তিপূর্ণভাবে প্রতিবাদ ও সচেতনতা তৈরি করা যায়।">Our educational initiatives provide tutoring, school supplies, and scholarships.</p></div></div>
+<div class="card scroll-anim"><div class="activity-card-img"><img src="media/boycottcampaign.jpeg" alt="Education"></div><div class="card-body"><h3 data-en="Boycott Campaign (Israeli Products)" data-bn="ইসরায়েলি পণ্য বয়কট ক্যাম্পেইন">Boycott Campaign (Israeli Products)
+</h3><p data-en="We ensure expressing solidarity with Palestinian Muslims and raising awareness through peaceful protest and support for the global strike." data-bn="আজ সারাদিন ও রাতব্যাপী আমাদের সংগঠনের উদ্যোগে শান্তিপূর্ণভাবে ইসরায়েলি পণ্য বর্জন ক্যাম্পেইন পরিচালিত হয়। আমরা দোকানদারদের দেশীয় পণ্য ব্যবহারে উৎসাহিত করি এবং ইসরায়েলি পণ্য বিক্রি থেকে বিরত থাকার আহ্বান জানাই।">Throughout the day and night, our organization conducted a peaceful campaign to boycott Israeli products, encouraging the use of local alternatives and raising awareness among shopkeepers.</p></div></div>
+</div></div>
+</section>
+</div>
+
+<!-- GALLERY PAGE -->
+<div class="page" id="page-gallery">
+<div class="page-header" style="padding-top:96px">
+<h1 data-en="Gallery" data-bn="গ্যালারি">Gallery</h1>
+<p data-en="Glimpses of our work and the communities we serve." data-bn="আমাদের কাজ এবং আমরা যে সম্প্রদায়গুলোর সেবা করি তার ঝলক।">Glimpses of our work and the communities we serve.</p>
+</div>
+<section class="section" style="background:var(--cream)">
+<div class="container"><div class="gallery-grid scroll-anim">
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/iftar.jpeg" alt="Community service"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/eidgift.jpeg" alt="Volunteer team"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/winter.jpeg" alt="Aid distribution"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/treeplantation.jpeg" alt="Children education"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/mosquitocontrol.jpeg" alt="Helping others"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/protestrally.jpeg" alt="Food distribution"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/leaflet.jpeg" alt="Winter drive"></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="media/boycottcampaign.jpeg" alt="Education program"></div>
+</div></div>
+</section>
+</div>
+
+<!-- VOLUNTEER PAGE -->
+<div class="page" id="page-volunteer">
+<div class="page-header" style="padding-top:96px">
+<h1 data-en="Volunteer Registration" data-bn="স্বেচ্ছাসেবক নিবন্ধন">Volunteer Registration</h1>
+<p data-en="Join our family of changemakers and help us serve humanity." data-bn="পরিবর্তনকারীদের আমাদের পরিবারে যোগ দিন এবং মানবতার সেবায় আমাদের সাহায্য করুন।">Join our family of changemakers and help us serve humanity.</p>
+</div>
+<section class="section" style="background:var(--cream)">
+<div class="max-w-2xl scroll-anim">
+<form class="form-card" onsubmit="submitForm(event,'volunteer')">
+<div class="form-group"><label data-en="Name *" data-bn="নাম *">Name *</label><input class="form-input" required></div>
+<div class="form-group"><label data-en="Address *" data-bn="ঠিকানা *">Address *</label><input class="form-input" required></div>
+<div class="form-row">
+<div class="form-group"><label data-en="Phone Number *" data-bn="মোবাইল নম্বর *">Phone Number *</label><input class="form-input" type="tel" required placeholder="+880"></div>
+<div class="form-group"><label data-en="Email" data-bn="ইমেইল">Email</label><input class="form-input" type="email" placeholder="email@example.com"></div>
+</div>
+<div class="form-group"><label data-en="Occupation" data-bn="পেশা">Occupation</label><input class="form-input"></div>
+<div class="form-group"><label data-en="Why do you want to join? *" data-bn="কেন যোগ দিতে চান? *">Why do you want to join? *</label><textarea class="form-input" rows="4" required></textarea></div>
+<button type="submit" class="btn btn-navy" style="width:100%;justify-content:center" data-en="✉ Submit Registration" data-bn="✉ নিবন্ধন জমা দিন">✉ Submit Registration</button>
+</form>
+</div>
+</section>
+</div>
+
+<!-- DONATE PAGE -->
+<div class="page" id="page-donate">
+<div class="page-header" style="padding-top:96px">
+<div style="font-size:2.5rem;margin-bottom:12px">♥</div>
+<h1 data-en="Donate" data-bn="দান করুন">Donate</h1>
+<p data-en="Your donation helps us reach more people in need." data-bn="আপনার দান আমাদের আরও বেশি অভাবী মানুষের কাছে পৌঁছাতে সাহায্য করে।">Your donation helps us reach more people in need.</p>
+</div>
+<section class="section" style="background:var(--cream)">
+<div class="container"><div class="two-col">
+<div class="scroll-anim">
+<h2 style="margin-bottom:24px" data-en="Payment Methods" data-bn="পেমেন্ট পদ্ধতি">Payment Methods</h2>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="payment-card"><div class="payment-icon bkash"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div><strong>bKash</strong><p style="color:var(--muted);font-size:.9rem;margin-top:4px">01576-840300</p></div></div>
+<div class="payment-card"><div class="payment-icon nagad"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div><strong>Nagad</strong><p style="color:var(--muted);font-size:.9rem;margin-top:4px">01576-840300</p></div></div>
+<div class="payment-card"><div class="payment-icon bank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div><div><strong data-en="Bank Transfer" data-bn="ব্যাংক ট্রান্সফার">Bank Transfer</strong><p style="color:var(--muted);font-size:.9rem;margin-top:4px;white-space:pre-line" data-en="Account: 1234567890&#10;Bank: Meghna Bank&#10;Branch: Pagla" data-bn="অ্যাকাউন্ট: ১১২১১২৮০০০০০৩০০&#10;ব্যাংক: মেঘনা ব্যাংক&#10;শাখা: নারায়ণগঞ্জ">Account: 112112800000300
+Bank: Meghna Bank
+Branch: Pagla</p></div></div>
+</div>
+</div>
+<div class="scroll-anim">
+<h2 style="margin-bottom:24px" data-en="Quick Donation" data-bn="দ্রুত দান">Quick Donation</h2>
+<form class="form-card" onsubmit="submitForm(event,'donate')">
+<div class="form-group"><label data-en="Your Name" data-bn="আপনার নাম">Your Name</label><input class="form-input"></div>
+<div class="form-group"><label data-en="Phone Number" data-bn="মোবাইল নম্বর">Phone Number</label><input class="form-input" type="tel"></div>
+<div class="form-group"><label data-en="Amount (BDT) *" data-bn="পরিমাণ (টাকা) *">Amount (BDT) *</label><input class="form-input" type="number" required placeholder="৳" id="donateAmount"></div>
+<div class="amount-btns">
+<button type="button" class="amount-btn" onclick="setAmount(100)">৳100</button>
+<button type="button" class="amount-btn" onclick="setAmount(500)">৳500</button>
+<button type="button" class="amount-btn" onclick="setAmount(1000)">৳1000</button>
+<button type="button" class="amount-btn" onclick="setAmount(5000)">৳5000</button>
+</div>
+<button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:20px" data-en="💳 Donate Now" data-bn="💳 দান করুন">💳 Donate Now</button>
+</form>
+</div>
+</div></div>
+</section>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="page-contact">
+<div class="page-header" style="padding-top:96px">
+<h1 data-en="Contact Us" data-bn="যোগাযোগ">Contact Us</h1>
+<p data-en="Have questions? We'd love to hear from you." data-bn="কোনো প্রশ্ন আছে? আমরা আপনার কাছ থেকে শুনতে চাই।">Have questions? We'd love to hear from you.</p>
+</div>
+<section class="section" style="background:var(--cream)">
+<div class="container"><div class="two-col scroll-anim">
+<div>
+<h2 style="margin-bottom:24px" data-en="Get in Touch" data-bn="যোগাযোগ করুন">Get in Touch</h2>
+<div class="contact-info-item"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><span>+880 1576-840300</span></div>
+<div class="contact-info-item"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>opaofficial2024@gmail.com</span></div>
+<div class="contact-info-item"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span data-en="Dhaka, Bangladesh" data-bn="ঢাকা, বাংলাদেশ">Dhaka, Bangladesh</span></div>
+<div class="map-frame" style="margin-top:24px"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.38703692693!2d90.27923871655078!3d23.780573258035857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563b5e39b30!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen loading="lazy" title="OPA Location"></iframe></div>
+</div>
+<form class="form-card" onsubmit="submitForm(event,'contact')">
+<div class="form-group"><label data-en="Name *" data-bn="নাম *">Name *</label><input class="form-input" required></div>
+<div class="form-group"><label data-en="Email *" data-bn="ইমেইল *">Email *</label><input class="form-input" type="email" required></div>
+<div class="form-group"><label data-en="Message *" data-bn="বার্তা *">Message *</label><textarea class="form-input" rows="5" required></textarea></div>
+<button type="submit" class="btn btn-navy" style="width:100%;justify-content:center" data-en="✉ Send Message" data-bn="✉ বার্তা পাঠান">✉ Send Message</button>
+</form>
+</div></div>
+</section>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<img src="" alt="" id="lightboxImg">
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-grid">
+<div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px"><div style="width:40px;height:40px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;color:var(--navy);font-family:var(--font-heading);font-weight:700; font-size:1.1rem"><img src="media/removebglogo.png"></div><span style="font-family:var(--font-heading);font-size:1.25rem">Organization of Peace Assistors</span></div>
+<p data-en="Organization of Peace Assistors — Serving humanity with compassion since our founding." data-bn="অর্গানাইজেশন অফ পিস অ্যাসিস্টরস — প্রতিষ্ঠালগ্ন থেকে মানবতার সেবায় নিবেদিত।">Organization of Peace Assistors — Serving humanity with compassion since our founding.</p>
+</div>
+<div>
+<h3 data-en="Quick Links" data-bn="দ্রুত লিংক">Quick Links</h3>
+<div class="footer-links">
+<a href="#" onclick="showPage('about')" data-en="About Us" data-bn="আমাদের পরিচিতি">About Us</a>
+<a href="#" onclick="showPage('activities')" data-en="Activities" data-bn="কার্যক্রম">Activities</a>
+<a href="#" onclick="showPage('volunteer')" data-en="Join as Volunteer" data-bn="স্বেচ্ছাসেবক হিসেবে যোগ দিন">Join as Volunteer</a>
+<a href="#" onclick="showPage('donate')" data-en="Donate" data-bn="দান করুন">Donate</a>
+</div>
+</div>
+<div>
+<h3 data-en="Contact" data-bn="যোগাযোগ">Contact</h3>
+<p style="margin-bottom:8px">📞 +880 1576-840300</p>
+<p style="margin-bottom:8px">✉ opaofficial2024@gmail.com</p>
+<p data-en="📍 Dhaka, Bangladesh" data-bn="📍 ঢাকা, বাংলাদেশ">📍 Dhaka, Bangladesh</p>
+<div class="social-links">
+<a href="https://www.facebook.com/opaofficial2024" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="https://www.instagram.com/opaofficial2024" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"/></svg></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom"><p>Copyright © 2026 Organization of Peace Assistors (OPA) - All rights reserved.</p></div>
+</footer>
+
+<script>
+let lang='en';
+// PAGE NAVIGATION
+function showPage(page){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('page-'+page).classList.add('active');
+document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a=>{
+a.classList.toggle('active',a.dataset.page===page);
+});
+document.getElementById('mobileMenu').classList.remove('open');
+window.scrollTo({top:0,behavior:'smooth'});
+setTimeout(initScrollObserver,100);
+}
+// MOBILE MENU
+function toggleMenu(){
+document.getElementById('mobileMenu').classList.toggle('open');
+}
+// LANGUAGE
+function toggleLang(){
+lang=lang==='en'?'bn':'en';
+document.getElementById('langLabel').textContent=lang==='en'?'বাংলা':'EN';
+document.querySelectorAll('[data-en]').forEach(el=>{
+const txt=el.getAttribute('data-'+lang);
+if(txt){
+if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=txt}
+else{el.innerHTML=txt}
+}
+});
+}
+// SCROLL ANIMATIONS
+function initScrollObserver(){
+const obs=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');animateCounters(e.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.scroll-anim:not(.visible)').forEach(el=>obs.observe(el));
+}
+// COUNTERS
+let countersAnimated=false;
+function animateCounters(el){
+el.querySelectorAll('.counter-num[data-target]').forEach(c=>{
+if(c.dataset.done)return;
+c.dataset.done='1';
+const target=parseInt(c.dataset.target);
+let current=0;const step=target/(2000/16);
+const timer=setInterval(()=>{
+current+=step;
+if(current>=target){c.textContent=target+'+';clearInterval(timer)}
+else c.textContent=Math.floor(current)+'+';
+},16);
+});
+}
+// LIGHTBOX
+function openLightbox(el){
+const img=el.querySelector('img');
+document.getElementById('lightboxImg').src=img.src;
+document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open')}
+// FORMS
+function submitForm(e,type){
+e.preventDefault();
+const msgs={
+volunteer:{en:'Thank you for registering! We will contact you soon.',bn:'নিবন্ধনের জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।'},
+donate:{en:'Thank you for your generous donation!',bn:'আপনার উদার দানের জন্য ধন্যবাদ!'},
+contact:{en:'Message sent! We will get back to you soon.',bn:'বার্তা পাঠানো হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।'}
+};
+showToast(msgs[type][lang]);
+e.target.reset();
+document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active'));
+}
+// DONATE AMOUNT
+function setAmount(val){
+document.getElementById('donateAmount').value=val;
+document.querySelectorAll('.amount-btn').forEach(b=>{
+b.classList.toggle('active',b.textContent.includes(val));
+});
+}
+// TOAST
+function showToast(msg){
+const t=document.createElement('div');t.className='toast';t.textContent=msg;
+document.body.appendChild(t);
+setTimeout(()=>{t.classList.add('hide');setTimeout(()=>t.remove(),300)},3000);
+}
+// INIT
+document.addEventListener('DOMContentLoaded',initScrollObserver);
+</script>
+</body>
+</html>
